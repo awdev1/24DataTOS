@@ -1,0 +1,34 @@
+body {
+  background-color: #111827; 
+  color: #ffffff;           
+  font-family: system-ui, sans-serif;
+}
+
+.tab-button {
+  color: #60a5fa; 
+  padding-bottom: 0.5rem;
+  border-color: transparent;
+}
+
+.tab-button:hover {
+  color: #93c5fd;  
+  cursor: pointer;
+}
+
+.tab-button.border-blue-400 {
+  border-color: #60a5fa;
+  font-weight: bold;
+}
+
+.tab-section {
+  display: none;
+}
+
+.tab-section.active {
+  display: block;
+}
+
+a {
+  color: #93c5fd;
+  text-decoration: underline;
+}
