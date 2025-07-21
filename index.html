@@ -2,66 +2,214 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>24Data API Documentation</title>
-  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-  <script>
-    function showTab(tabId) {
-      const tabs = document.querySelectorAll('.tab-section');
-      tabs.forEach(tab => tab.classList.add('hidden'));
-      document.getElementById(tabId).classList.remove('hidden');
-
-      const buttons = document.querySelectorAll('.tab-button');
-      buttons.forEach(btn => btn.classList.remove('border-blue-400'));
-      document.querySelector(`[data-tab="${tabId}"]`).classList.add('border-blue-400');
-    }
-  </script>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
+  <link href="styles.css" rel="stylesheet" />
 </head>
 <body class="bg-gray-900 text-white font-sans">
   <div class="max-w-5xl mx-auto px-4 py-8">
-    <h1 class="text-4xl font-bold text-blue-400 mb-6">24Data API Documentation</h1>
+    <h1 class="text-4xl font-bold text-blue-400 mb-6">(UNOFFICIAL) 24Data API Documentation</h1>
 
     <nav class="mb-8 text-blue-300 border-b border-blue-700">
       <ul class="flex space-x-4">
-        <li><button class="tab-button pb-2 border-b-2" data-tab="rest" onclick="showTab('rest')">REST</button></li>
-        <li><button class="tab-button pb-2 border-b-2" data-tab="websocket" onclick="showTab('websocket')">WebSocket</button></li>
-        <li><button class="tab-button pb-2 border-b-2" data-tab="structures" onclick="showTab('structures')">Structures</button></li>
-        <li><button class="tab-button pb-2 border-b-2" data-tab="usage" onclick="showTab('usage')">Usage</button></li>
-        <li><button class="tab-button pb-2 border-b-2" data-tab="terms" onclick="showTab('terms')">Terms</button></li>
+        <li><button class="tab-button pb-2 border-b-2" data-tab="rest">REST</button></li>
+        <li><button class="tab-button pb-2 border-b-2" data-tab="websocket">WebSocket</button></li>
+        <li><button class="tab-button pb-2 border-b-2" data-tab="structures">Structures</button></li>
+        <li><button class="tab-button pb-2 border-b-2" data-tab="terms">Terms</button></li>
+        <li><button class="tab-button pb-2 border-b-2" data-tab="tryapi">Try API</button></li>
       </ul>
     </nav>
 
-    <section id="rest" class="tab-section">
-      <h2 class="text-2xl font-semibold text-blue-300">REST Endpoints</h2>
-      <div class="space-y-4">
-        <div>
-          <h3 class="text-xl font-bold">GET /acft-data</h3>
-          <p>Aircraft data from private server. <strong>Rate limit:</strong> 75 req/min. Suggested: 20 req/min.</p>
-        </div>
-        <div>
-          <h3 class="text-xl font-bold">GET /acft-data/event</h3>
-          <p>Aircraft data from event server. Shares rate limit with above. Suggested: use both for 40 req/min total.</p>
-        </div>
-        <div>
-          <h3 class="text-xl font-bold">GET /controllers</h3>
-          <p>Controller positions. <strong>Rate limit:</strong> 45 req/min. Suggested: 10 req/min.</p>
-        </div>
+  <section id="rest" class="tab-section">
+    <h2 class="text-2xl font-semibold text-blue-300">REST Endpoints</h2>
+    <div class="space-y-8 mt-4">
+
+      <div>
+        <h3 class="text-xl font-bold text-blue-200">GET /acft-data</h3>
+        <p class="mb-2">
+          Aircraft data from private server.<br />
+          <strong>Rate limit:</strong> 75 req/min.<br />
+          Suggested polling: 20 req/min (every 3 seconds).
+        </p>
+        <pre class="bg-gray-800 text-green-200 p-3 rounded overflow-x-auto">
+    {
+      "PTC_Helper": {
+        "heading": 89,
+        "playerName": "PTC_Helper",
+        "altitude": 22,
+        "aircraftType": "Cessna 172",
+        "position": {
+          "y": -4485,
+          "x": 5378
+        },
+        "speed": 0,
+        "wind": "135/11",
+        "isOnGround": true,
+        "groundSpeed": 0
+      }
+    //...
+    }
+        </pre>
       </div>
-    </section>
+
+      <div>
+        <h3 class="text-xl font-bold text-blue-200">GET /acft-data/event</h3>
+        <p class="mb-2">
+          Aircraft data from event server.<br />
+          Shares rate limit with <code>/acft-data</code>.<br />
+          Suggested combined polling rate: 40 req/min.
+        </p>
+        <pre class="bg-gray-800 text-green-200 p-3 rounded overflow-x-auto">
+    {
+      "PTC_Helper": {
+        "heading": 89,
+        "playerName": "PTC_Helper",
+        "altitude": 22,
+        "aircraftType": "Cessna 172",
+        "position": {
+          "y": -4485,
+          "x": 5378
+        },
+        "speed": 0,
+        "wind": "135/11",
+        "isOnGround": true,
+        "groundSpeed": 0
+      }
+    //...
+    }
+        </pre>
+      </div>
+
+      <div>
+        <h3 class="text-xl font-bold text-blue-200">GET /controllers</h3>
+        <p class="mb-2">
+          Controller positions.<br />
+          <strong>Rate limit:</strong> 45 req/min.<br />
+          Suggested polling: 10 req/min (every 6 seconds).
+        </p>
+        <pre class="bg-gray-800 text-green-200 p-3 rounded overflow-x-auto">
+  [
+    {
+      "holder": "AutumnHTDG",
+      "claimable": false,
+      "airport": "Rockford",
+      "position": "Tower",
+      "queue": ["Orange12345", "TreelonsMusk"]
+    },
+    {
+      "holder": "",
+      "claimable": true,
+      "airport": "Rockford",
+      "position": "Ground",
+      "queue": []
+    }
+  ]
+        </pre>
+      </div>
+
+    </div>
+  </section>
 
     <section id="websocket" class="tab-section hidden">
       <h2 class="text-2xl font-semibold text-blue-300">WebSocket</h2>
-      <p>URL: <code>wss://24Data.ptfs.app/wss</code></p>
-      <p>Max 3 connections. Remove <code>Origin</code> header on connect.</p>
-      <h3 class="text-xl mt-4 font-bold">Events</h3>
+      <p class="mb-2">
+        <strong>Endpoint:</strong>
+        <code class="bg-gray-800 text-green-300 px-1 rounded">wss://24data.ptfs.app/wss</code>
+      </p>
+
+      <div class="bg-yellow-900 text-yellow-300 p-3 rounded mb-4">
+        ⚠️ <strong>Important:</strong> Browsers <em>cannot</em> connect to this WebSocket directly.
+        <ul class="list-disc list-inside ml-4 mt-1">
+          <li>You must <strong>not</strong> set the <code>Origin</code> header when connecting.</li>
+          <li>Browsers always set <code>Origin</code> headers automatically, so you must use a <strong>backend</strong> (e.g., Node.js, Python, Go) for WebSocket access.</li>
+        </ul>
+      </div>
+
+      <p>A maximum of <strong>3 connections</strong> are allowed. One connection per server is sufficient.</p>
+
+      <h3 class="text-xl mt-6 font-bold text-blue-200">Data Format</h3>
+      <p>Each incoming WebSocket message will follow this format:</p>
+      <pre class="bg-gray-800 text-green-200 p-3 rounded overflow-x-auto">
+    {
+      "t": "EVENT_TYPE",
+      "d": { /* payload */ }
+    }
+    </pre>
+
+      <h3 class="text-xl mt-6 font-bold text-blue-200">Event Types</h3>
       <ul class="list-disc list-inside">
         <li><code>ACFT_DATA</code> – Aircraft data (main server)</li>
         <li><code>EVENT_ACFT_DATA</code> – Aircraft data (event server)</li>
-        <li><code>FLIGHT_PLAN</code> – Flight plans (main server)</li>
-        <li><code>EVENT_FLIGHT_PLAN</code> – Flight plans (event server)</li>
-        <li><code>CONTROLLERS</code> – Controller positions</li>
+        <li><code>FLIGHT_PLAN</code> – Filed flight plans (main server)</li>
+        <li><code>EVENT_FLIGHT_PLAN</code> – Filed flight plans (event server)</li>
+        <li><code>CONTROLLERS</code> – ATC controller positions</li>
       </ul>
+
+      <h3 class="text-xl mt-6 font-bold text-blue-200">Types</h3>
+
+      <h4 class="text-lg font-semibold mt-4 text-purple-300">AircraftData</h4>
+      <p>A dictionary of callsigns as keys and aircraft info as values:</p>
+      <pre class="bg-gray-800 text-green-200 p-3 rounded overflow-x-auto">
+    {
+      "Shamrock-1337": {
+        "heading": 290,
+        "playerName": "PTC_Helper",
+        "altitude": 3069,
+        "aircraftType": "Airbus A380",
+        "position": { "y": -23349, "x": -10906 },
+        "speed": 299,
+        "wind": "357/15",
+        "isOnGround": false,
+        "groundSpeed": 208.66
+      }
+    }
+    </pre>
+      <p><strong>Note:</strong> 1 stud = 1.8372 ft. Aircraft speed is reported in game knots, not real-world knots.</p>
+      <p>
+        Real-world conversion: <code>real_knots = game_knots × 0.59217</code><br />
+        <code>1 NMi ≈ 3307.14 studs</code>
+      </p>
+
+      <h4 class="text-lg font-semibold mt-4 text-purple-300">FlightPlan</h4>
+      <pre class="bg-gray-800 text-green-200 p-3 rounded overflow-x-auto">
+    {
+      "robloxName": "PTC_Helper",
+      "callsign": "Shamrock-1337",
+      "realcallsign": "Shamrock-1337",
+      "aircraft": "A330",
+      "flightrules": "IFR",
+      "departing": "IMLR",
+      "arriving": "IGRV",
+      "route": "N/A",
+      "flightlevel": "040"
+    }
+    </pre>
+
+      <h4 class="text-lg font-semibold mt-4 text-purple-300">Controllers (Position[])</h4>
+      <pre class="bg-gray-800 text-green-200 p-3 rounded overflow-x-auto">
+    [
+      {
+        "holder": "AutumnHTDG",
+        "claimable": false,
+        "airport": "Rockford",
+        "position": "Tower",
+        "queue": ["Orange12345", "TreelonsMusk"]
+      },
+      {
+        "holder": "",
+        "claimable": true,
+        "airport": "Rockford",
+        "position": "Ground",
+        "queue": []
+      }
+    ]
+    </pre>
+
+
     </section>
+
+
 
     <section id="structures" class="tab-section hidden">
       <h2 class="text-2xl font-semibold text-blue-300">Data Structures</h2>
@@ -73,25 +221,18 @@
       <p>Array of controller positions. Includes queue info, airport, and role (Tower, Ground).</p>
     </section>
 
-    <section id="usage" class="tab-section hidden">
-      <h2 class="text-2xl font-semibold text-blue-300">Usage Guidelines</h2>
-      <ul class="list-disc list-inside">
-        <li>No browser-origin requests; use a backend server.</li>
-        <li>Don’t exceed rate limits or retain data longer than 14 days.</li>
-        <li>Non-commercial use only.</li>
-        <li>Do not train AI models with the data.</li>
-        <li>API is provided as-is with no warranty.</li>
-      </ul>
-    </section>
-
 
     <section id="terms" class="tab-section hidden">
       <h2 class="text-2xl font-semibold text-blue-300">Terms of Use</h2>
       <p class="mb-2">Effective Date: 2025-07-19</p>
-
+      <h3 class="text-xl mt-6 font-bold text-red-300">⚠️ API Stability Notice</h3>
+      <br>
+      <p class="bg-red-900 text-red-200 p-3 rounded">
+        This WebSocket API is considered <strong>unstable</strong> (Major version 0 using SemVer). It is provided <strong>as-is</strong> with no guarantee of uptime, structure, or continued support. Use at your own risk.
+      </p>
       <h3 class="text-xl font-bold mt-4">Definitions</h3>
       <ul class="list-disc list-inside space-y-1">
-        <li><strong>'APIs'</strong> means our application programming interfaces made available through the 24Data API website (<a href="https://24Data.ptfs.app/" class="text-blue-400 underline">https://24Data.ptfs.app/</a>).</li>
+        <li><strong>'APIs'</strong> means our application programming interfaces made available through the 24Data API website (<a href="https://24Data.ptfs.app/" class="text-blue-400 underline" target="_blank" rel="noopener noreferrer">https://24Data.ptfs.app/</a>).</li>
         <li><strong>'Services'</strong> means the services provided to players through the ATC 24 Discord Server or through the ATC 24 portal.</li>
         <li><strong>'Application'</strong> means the software application, website or other interface that you develop, own or operate to interact with the 24Data APIs.</li>
       </ul>
@@ -141,10 +282,31 @@
       <p><strong>THE APIS ARE PROVIDED "AS IS" AND "AS AVAILABLE".</strong> We disclaim all warranties—express or implied—including merchantability, fitness for a particular purpose, and non-infringement. We make no guarantees regarding uptime, performance, or accuracy. We are not liable for any damages arising from use or inability to use the APIs.</p>
     </section>
 
-    <footer class="text-sm text-gray-500 mt-10">
-      <p>© 2025 24Data API | Effective as of 2025-07-19</p>
-    </footer>
+    <section id="tryapi" class="tab-section hidden">
+      <h2 class="text-2xl font-semibold text-blue-300 mb-4">Try REST API</h2>
+
+      <nav class="mb-4 border-b border-blue-700">
+        <ul class="flex space-x-4 text-blue-300">
+          <li><button class="tryapi-subtab-button pb-2 border-b-2 border-transparent hover:border-blue-400 font-semibold" data-subtab="tryapi-rest">REST</button></li>
+        </ul>
+      </nav>
+
+      <div id="tryapi-rest" class="tryapi-subtab">
+        <form id="apiRequestForm" class="mb-4">
+          <label for="endpoint" class="block mb-2">Enter REST endpoint (e.g. <code>/acft-data</code>):</label>
+          <input id="endpoint" type="text" class="w-full p-2 rounded bg-gray-800 text-white mb-2" value="/acft-data" required />
+          <button type="submit" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded">Send GET Request</button>
+        </form>
+        <pre id="apiResponse" class="bg-gray-800 p-4 rounded max-h-64 overflow-auto whitespace-pre-wrap hidden"></pre>
+      </div>
+
+    </section>
   </div>
-  <script>showTab('rest');</script>
+
+  <footer class="text-sm text-gray-500 mt-10">
+    <p>© 2025 24Data API | Effective as of 2025-07-19</p>
+  </footer>
+
+  <script src="main.js"></script>
 </body>
 </html>
