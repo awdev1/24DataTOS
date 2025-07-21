@@ -31,11 +31,13 @@
             <div class="space-y-8 mt-4">
                <div>
                   <h3 class="text-xl font-bold text-blue-200">GET /acft-data</h3>
-                  <p class="mb-2">
-                     Aircraft data from private server.<br />
-                     <strong>Rate limit:</strong> 75 req/min.<br />
-                     Suggested polling: 20 req/min (every 3 seconds).
-                  </p>
+                  <br>
+                  <div class="bg-gray-800 text-gray-300 p-3 rounded mb-2">
+                    <p><strong>Endpoint:</strong> <code>/acft-data</code><br />
+                    <strong>Rate limit:</strong> 75 req/min<br />
+                    <strong>Suggested polling:</strong> 20 req/min (every 3 seconds)</p>
+                  </div>
+
                   <pre class="bg-gray-800 text-green-200 p-3 rounded overflow-x-auto">
     {
       "PTC_Helper": {
@@ -58,11 +60,12 @@
                </div>
                <div>
                   <h3 class="text-xl font-bold text-blue-200">GET /acft-data/event</h3>
-                  <p class="mb-2">
+                  <br>
+                  <div class="bg-gray-800 text-gray-300 p-3 rounded mb-2">
                      Aircraft data from event server.<br />
                      Shares rate limit with <code>/acft-data</code>.<br />
                      Suggested combined polling rate: 40 req/min.
-                  </p>
+                  </div>
                   <pre class="bg-gray-800 text-green-200 p-3 rounded overflow-x-auto">
     {
       "PTC_Helper": {
@@ -85,11 +88,12 @@
                </div>
                <div>
                   <h3 class="text-xl font-bold text-blue-200">GET /controllers</h3>
-                  <p class="mb-2">
+                  <br>
+                  <div class="bg-gray-800 text-gray-300 p-3 rounded mb-2">
                      Controller positions.<br />
                      <strong>Rate limit:</strong> 45 req/min.<br />
                      Suggested polling: 10 req/min (every 6 seconds).
-                  </p>
+                  </div>
                   <pre class="bg-gray-800 text-green-200 p-3 rounded overflow-x-auto">
   [
     {
@@ -113,6 +117,7 @@
          </section>
          <section id="websocket" class="tab-section hidden">
             <h2 class="text-2xl font-semibold text-blue-300">WebSocket</h2>
+            <br>
             <p class="mb-2">
                <strong>Endpoint:</strong>
                <code class="bg-gray-800 text-green-300 px-1 rounded">wss://24data.ptfs.app/wss</code>
