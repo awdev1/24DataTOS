@@ -1,45 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>24Data API Documentation</title>
-  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
-  <link href="styles.css" rel="stylesheet" />
-</head>
-<body class="bg-gray-900 text-white font-sans">
-  <div class="max-w-5xl mx-auto px-4 py-8">
-<h1 class="text-4xl font-bold text-blue-400 mb-6">(UNOFFICIAL) 24Data API Documentation</h1>
-
-<div class="bg-red-900 text-red-200 p-4 rounded mb-8 border border-red-600">
-  ⚠️ <strong>Disclaimer:</strong> This documentation is unofficial and <em>may not be up-to-date</em>.
-  For the latest updates, discussions, and official announcements, please check the
-  <a href="https://discord.gg/jPFY9tTxq6" target="_blank" rel="noopener noreferrer" class="underline text-red-300 hover:text-red-100">
-    official Discord server
-  </a>.
-</div>
-    <nav class="mb-8 text-blue-300 border-b border-blue-700">
-      <ul class="flex space-x-4">
-        <li><button class="tab-button pb-2 border-b-2" data-tab="rest">REST</button></li>
-        <li><button class="tab-button pb-2 border-b-2" data-tab="websocket">WebSocket</button></li>
-        <li><button class="tab-button pb-2 border-b-2" data-tab="structures">Structures</button></li>
-        <li><button class="tab-button pb-2 border-b-2" data-tab="terms">Terms</button></li>
-        <li><button class="tab-button pb-2 border-b-2" data-tab="tryapi">Try API</button></li>
-      </ul>
-    </nav>
-
-  <section id="rest" class="tab-section">
-    <h2 class="text-2xl font-semibold text-blue-300">REST Endpoints</h2>
-    <div class="space-y-8 mt-4">
-
-      <div>
-        <h3 class="text-xl font-bold text-blue-200">GET /acft-data</h3>
-        <p class="mb-2">
-          Aircraft data from private server.<br />
-          <strong>Rate limit:</strong> 75 req/min.<br />
-          Suggested polling: 20 req/min (every 3 seconds).
-        </p>
-        <pre class="bg-gray-800 text-green-200 p-3 rounded overflow-x-auto">
+   <head>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1" />
+      <title>24Data API Documentation</title>
+      <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
+      <link href="styles.css" rel="stylesheet" />
+   </head>
+   <body class="bg-gray-900 text-white font-sans">
+      <div class="max-w-5xl mx-auto px-4 py-8">
+         <h1 class="text-4xl font-bold text-blue-400 mb-6">(UNOFFICIAL) 24Data API Documentation</h1>
+         <div class="bg-red-900 text-red-200 p-4 rounded mb-8 border border-red-600">
+            ⚠️ <strong>Disclaimer:</strong> This documentation is unofficial and <em>may not be up-to-date</em>.
+            For the latest updates, discussions, and official announcements, please check the
+            <a href="https://discord.gg/jPFY9tTxq6" target="_blank" rel="noopener noreferrer" class="underline text-red-300 hover:text-red-100">
+            official Discord server.
+            </a>
+         </div>
+         <nav class="mb-8 text-blue-300 border-b border-blue-700">
+            <ul class="flex space-x-4">
+               <li><button class="tab-button pb-2 border-b-2" data-tab="rest">REST</button></li>
+               <li><button class="tab-button pb-2 border-b-2" data-tab="websocket">WebSocket</button></li>
+               <li><button class="tab-button pb-2 border-b-2" data-tab="structures">Structures</button></li>
+               <li><button class="tab-button pb-2 border-b-2" data-tab="terms">Terms</button></li>
+               <li><button class="tab-button pb-2 border-b-2" data-tab="tryapi">Try API</button></li>
+            </ul>
+         </nav>
+         <section id="rest" class="tab-section">
+            <h2 class="text-2xl font-semibold text-blue-300">REST Endpoints</h2>
+            <div class="space-y-8 mt-4">
+               <div>
+                  <h3 class="text-xl font-bold text-blue-200">GET /acft-data</h3>
+                  <p class="mb-2">
+                     Aircraft data from private server.<br />
+                     <strong>Rate limit:</strong> 75 req/min.<br />
+                     Suggested polling: 20 req/min (every 3 seconds).
+                  </p>
+                  <pre class="bg-gray-800 text-green-200 p-3 rounded overflow-x-auto">
     {
       "PTC_Helper": {
         "heading": 89,
@@ -58,16 +55,15 @@
     //...
     }
         </pre>
-      </div>
-
-      <div>
-        <h3 class="text-xl font-bold text-blue-200">GET /acft-data/event</h3>
-        <p class="mb-2">
-          Aircraft data from event server.<br />
-          Shares rate limit with <code>/acft-data</code>.<br />
-          Suggested combined polling rate: 40 req/min.
-        </p>
-        <pre class="bg-gray-800 text-green-200 p-3 rounded overflow-x-auto">
+               </div>
+               <div>
+                  <h3 class="text-xl font-bold text-blue-200">GET /acft-data/event</h3>
+                  <p class="mb-2">
+                     Aircraft data from event server.<br />
+                     Shares rate limit with <code>/acft-data</code>.<br />
+                     Suggested combined polling rate: 40 req/min.
+                  </p>
+                  <pre class="bg-gray-800 text-green-200 p-3 rounded overflow-x-auto">
     {
       "PTC_Helper": {
         "heading": 89,
@@ -86,16 +82,15 @@
     //...
     }
         </pre>
-      </div>
-
-      <div>
-        <h3 class="text-xl font-bold text-blue-200">GET /controllers</h3>
-        <p class="mb-2">
-          Controller positions.<br />
-          <strong>Rate limit:</strong> 45 req/min.<br />
-          Suggested polling: 10 req/min (every 6 seconds).
-        </p>
-        <pre class="bg-gray-800 text-green-200 p-3 rounded overflow-x-auto">
+               </div>
+               <div>
+                  <h3 class="text-xl font-bold text-blue-200">GET /controllers</h3>
+                  <p class="mb-2">
+                     Controller positions.<br />
+                     <strong>Rate limit:</strong> 45 req/min.<br />
+                     Suggested polling: 10 req/min (every 6 seconds).
+                  </p>
+                  <pre class="bg-gray-800 text-green-200 p-3 rounded overflow-x-auto">
   [
     {
       "holder": "AutumnHTDG",
@@ -113,51 +108,43 @@
     }
   ]
         </pre>
-      </div>
-
-    </div>
-  </section>
-
-    <section id="websocket" class="tab-section hidden">
-      <h2 class="text-2xl font-semibold text-blue-300">WebSocket</h2>
-      <p class="mb-2">
-        <strong>Endpoint:</strong>
-        <code class="bg-gray-800 text-green-300 px-1 rounded">wss://24data.ptfs.app/wss</code>
-      </p>
-
-      <div class="bg-yellow-900 text-yellow-300 p-3 rounded mb-4">
-        ⚠️ <strong>Important:</strong> Browsers <em>cannot</em> connect to this WebSocket directly.
-        <ul class="list-disc list-inside ml-4 mt-1">
-          <li>You must <strong>not</strong> set the <code>Origin</code> header when connecting.</li>
-          <li>Browsers always set <code>Origin</code> headers automatically, so you must use a <strong>backend</strong> (e.g., Node.js, Python, Go) for WebSocket access.</li>
-        </ul>
-      </div>
-
-      <p>A maximum of <strong>3 connections</strong> are allowed. One connection per server is sufficient.</p>
-
-      <h3 class="text-xl mt-6 font-bold text-blue-200">Data Format</h3>
-      <p>Each incoming WebSocket message will follow this format:</p>
-      <pre class="bg-gray-800 text-green-200 p-3 rounded overflow-x-auto">
+               </div>
+            </div>
+         </section>
+         <section id="websocket" class="tab-section hidden">
+            <h2 class="text-2xl font-semibold text-blue-300">WebSocket</h2>
+            <p class="mb-2">
+               <strong>Endpoint:</strong>
+               <code class="bg-gray-800 text-green-300 px-1 rounded">wss://24data.ptfs.app/wss</code>
+            </p>
+            <div class="bg-yellow-900 text-yellow-300 p-3 rounded mb-4">
+               ⚠️ <strong>Important:</strong> Browsers <em>cannot</em> connect to this WebSocket directly.
+               <ul class="list-disc list-inside ml-4 mt-1">
+                  <li>You must <strong>not</strong> set the <code>Origin</code> header when connecting.</li>
+                  <li>Browsers always set <code>Origin</code> headers automatically, so you must use a <strong>backend</strong> (e.g., Node.js, Python, Go) for WebSocket access.</li>
+               </ul>
+            </div>
+            <p>A maximum of <strong>3 connections</strong> are allowed. One connection per server is sufficient.</p>
+            <h3 class="text-xl mt-6 font-bold text-blue-200">Data Format</h3>
+            <p>Each incoming WebSocket message will follow this format:</p>
+            <pre class="bg-gray-800 text-green-200 p-3 rounded overflow-x-auto">
     {
       "t": "EVENT_TYPE",
       "d": { /* payload */ }
     }
     </pre>
-
-      <h3 class="text-xl mt-6 font-bold text-blue-200">Event Types</h3>
-      <ul class="list-disc list-inside">
-        <li><code>ACFT_DATA</code> – Aircraft data (main server)</li>
-        <li><code>EVENT_ACFT_DATA</code> – Aircraft data (event server)</li>
-        <li><code>FLIGHT_PLAN</code> – Filed flight plans (main server)</li>
-        <li><code>EVENT_FLIGHT_PLAN</code> – Filed flight plans (event server)</li>
-        <li><code>CONTROLLERS</code> – ATC controller positions</li>
-      </ul>
-
-      <h3 class="text-xl mt-6 font-bold text-blue-200">Types</h3>
-
-      <h4 class="text-lg font-semibold mt-4 text-purple-300">AircraftData</h4>
-      <p>A dictionary of callsigns as keys and aircraft info as values:</p>
-      <pre class="bg-gray-800 text-green-200 p-3 rounded overflow-x-auto">
+            <h3 class="text-xl mt-6 font-bold text-blue-200">Event Types</h3>
+            <ul class="list-disc list-inside">
+               <li><code>ACFT_DATA</code> – Aircraft data (main server)</li>
+               <li><code>EVENT_ACFT_DATA</code> – Aircraft data (event server)</li>
+               <li><code>FLIGHT_PLAN</code> – Filed flight plans (main server)</li>
+               <li><code>EVENT_FLIGHT_PLAN</code> – Filed flight plans (event server)</li>
+               <li><code>CONTROLLERS</code> – ATC controller positions</li>
+            </ul>
+            <h3 class="text-xl mt-6 font-bold text-blue-200">Types</h3>
+            <h4 class="text-lg font-semibold mt-4 text-purple-300">AircraftData</h4>
+            <p>A dictionary of callsigns as keys and aircraft info as values:</p>
+            <pre class="bg-gray-800 text-green-200 p-3 rounded overflow-x-auto">
     {
       "Shamrock-1337": {
         "heading": 290,
@@ -172,14 +159,13 @@
       }
     }
     </pre>
-      <p><strong>Note:</strong> 1 stud = 1.8372 ft. Aircraft speed is reported in game knots, not real-world knots.</p>
-      <p>
-        Real-world conversion: <code>real_knots = game_knots × 0.59217</code><br />
-        <code>1 NMi ≈ 3307.14 studs</code>
-      </p>
-
-      <h4 class="text-lg font-semibold mt-4 text-purple-300">FlightPlan</h4>
-      <pre class="bg-gray-800 text-green-200 p-3 rounded overflow-x-auto">
+            <p><strong>Note:</strong> 1 stud = 1.8372 ft. Aircraft speed is reported in game knots, not real-world knots.</p>
+            <p>
+               Real-world conversion: <code>real_knots = game_knots × 0.59217</code><br />
+               <code>1 NMi ≈ 3307.14 studs</code>
+            </p>
+            <h4 class="text-lg font-semibold mt-4 text-purple-300">FlightPlan</h4>
+            <pre class="bg-gray-800 text-green-200 p-3 rounded overflow-x-auto">
     {
       "robloxName": "PTC_Helper",
       "callsign": "Shamrock-1337",
@@ -192,9 +178,8 @@
       "flightlevel": "040"
     }
     </pre>
-
-      <h4 class="text-lg font-semibold mt-4 text-purple-300">Controllers (Position[])</h4>
-      <pre class="bg-gray-800 text-green-200 p-3 rounded overflow-x-auto">
+            <h4 class="text-lg font-semibold mt-4 text-purple-300">Controllers (Position[])</h4>
+            <pre class="bg-gray-800 text-green-200 p-3 rounded overflow-x-auto">
     [
       {
         "holder": "AutumnHTDG",
@@ -212,108 +197,90 @@
       }
     ]
     </pre>
-
-
-    </section>
-
-
-
-    <section id="structures" class="tab-section hidden">
-      <h2 class="text-2xl font-semibold text-blue-300">Data Structures</h2>
-      <h3 class="text-xl font-bold">AircraftData</h3>
-      <p>Key-value object with callsign as key. Includes heading, position, altitude, aircraft type, speed, and groundSpeed.</p>
-      <h3 class="text-xl font-bold mt-4">FlightPlan</h3>
-      <p>Submitted via WebSocket. Includes aircraft, route, rules, origin, destination, etc.</p>
-      <h3 class="text-xl font-bold mt-4">Position[]</h3>
-      <p>Array of controller positions. Includes queue info, airport, and role (Tower, Ground).</p>
-    </section>
-
-
-    <section id="terms" class="tab-section hidden">
-      <h2 class="text-2xl font-semibold text-blue-300">Terms of Use</h2>
-      <p class="mb-2">Effective Date: 2025-07-19</p>
-      <h3 class="text-xl mt-6 font-bold text-red-300">⚠️ API Stability Notice</h3>
-      <br>
-      <p class="bg-red-900 text-red-200 p-3 rounded">
-        This WebSocket API is considered <strong>unstable</strong> (Major version 0 using SemVer). It is provided <strong>as-is</strong> with no guarantee of uptime, structure, or continued support. Use at your own risk.
-      </p>
-      <h3 class="text-xl font-bold mt-4">Definitions</h3>
-      <ul class="list-disc list-inside space-y-1">
-        <li><strong>'APIs'</strong> means our application programming interfaces made available through the 24Data API website (<a href="https://24Data.ptfs.app/" class="text-blue-400 underline" target="_blank" rel="noopener noreferrer">https://24Data.ptfs.app/</a>).</li>
-        <li><strong>'Services'</strong> means the services provided to players through the ATC 24 Discord Server or through the ATC 24 portal.</li>
-        <li><strong>'Application'</strong> means the software application, website or other interface that you develop, own or operate to interact with the 24Data APIs.</li>
-      </ul>
-
-      <h3 class="text-xl font-bold mt-4">Agreement</h3>
-
-      <h4 class="text-lg font-semibold mt-2">Access</h4>
-      <ul class="list-disc list-inside space-y-1">
-        <li>You are granted a non-exclusive, worldwide, non-transferable, limited license to access our APIs only as necessary to develop, test, use and support your Application.</li>
-        <li>You may not sell, rent, lease, sublicense, redistribute or syndicate access to any of our APIs.</li>
-        <li>You may not Commercially Distribute your Application. This includes any direct charges, freemium models, or free apps that connect to paid products or services.</li>
-        <li>These restrictions apply to all Applications, whether public or private/custom-built.</li>
-      </ul>
-
-      <h4 class="text-lg font-semibold mt-2">Usage</h4>
-      <ul class="list-disc list-inside space-y-1">
-        <li>You must use the APIs only in accordance with this Agreement and the 24Data API documentation.</li>
-        <li>Prohibited activities:
-          <ul class="list-disc list-inside ml-6">
-            <li>Accessing APIs in violation of laws or regulations.</li>
-            <li>Breaking or bypassing our technical/security systems.</li>
-            <li>Creating security vulnerabilities or testing our systems without authorization.</li>
-            <li>Replicating or competing with our Services.</li>
-            <li>Reverse engineering the APIs or Services.</li>
-            <li>Exceeding rate limits or engaging in abusive usage.</li>
-          </ul>
-        </li>
-        <li>Limit data usage to only what’s required for functionality, and store no longer than 14 days.</li>
-        <li>You may not:
-          <ul class="list-disc list-inside ml-6">
-            <li>Use API Data to train large language models.</li>
-            <li>Retain API Data longer than 14 days.</li>
-          </ul>
-        </li>
-      </ul>
-
-      <h4 class="text-lg font-semibold mt-2">Modifications</h4>
-      <p>We may make changes to our APIs at any time, including breaking changes, with or without notice.</p>
-
-      <h4 class="text-lg font-semibold mt-2">Feedback</h4>
-      <p>If you provide feedback or suggestions, we may use them freely and without obligation to you.</p>
-
-      <h4 class="text-lg font-semibold mt-2">Termination</h4>
-      <p>You may stop using the APIs at any time. We may terminate your access at any time, with or without cause or notice.</p>
-
-      <h4 class="text-lg font-semibold mt-2">Disclaimer of Warranties and Liability</h4>
-      <p><strong>THE APIS ARE PROVIDED "AS IS" AND "AS AVAILABLE".</strong> We disclaim all warranties—express or implied—including merchantability, fitness for a particular purpose, and non-infringement. We make no guarantees regarding uptime, performance, or accuracy. We are not liable for any damages arising from use or inability to use the APIs.</p>
-    </section>
-
-    <section id="tryapi" class="tab-section hidden">
-      <h2 class="text-2xl font-semibold text-blue-300 mb-4">Try REST API</h2>
-
-      <nav class="mb-4 border-b border-blue-700">
-        <ul class="flex space-x-4 text-blue-300">
-          <li><button class="tryapi-subtab-button pb-2 border-b-2 border-transparent hover:border-blue-400 font-semibold" data-subtab="tryapi-rest">REST</button></li>
-        </ul>
-      </nav>
-
-      <div id="tryapi-rest" class="tryapi-subtab">
-        <form id="apiRequestForm" class="mb-4">
-          <label for="endpoint" class="block mb-2">Enter REST endpoint (e.g. <code>/acft-data</code>):</label>
-          <input id="endpoint" type="text" class="w-full p-2 rounded bg-gray-800 text-white mb-2" value="/acft-data" required />
-          <button type="submit" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded">Send GET Request</button>
-        </form>
-        <pre id="apiResponse" class="bg-gray-800 p-4 rounded max-h-64 overflow-auto whitespace-pre-wrap hidden"></pre>
+         </section>
+         <section id="structures" class="tab-section hidden">
+            <h2 class="text-2xl font-semibold text-blue-300">Data Structures</h2>
+            <h3 class="text-xl font-bold">AircraftData</h3>
+            <p>Key-value object with callsign as key. Includes heading, position, altitude, aircraft type, speed, and groundSpeed.</p>
+            <h3 class="text-xl font-bold mt-4">FlightPlan</h3>
+            <p>Submitted via WebSocket. Includes aircraft, route, rules, origin, destination, etc.</p>
+            <h3 class="text-xl font-bold mt-4">Position[]</h3>
+            <p>Array of controller positions. Includes queue info, airport, and role (Tower, Ground).</p>
+         </section>
+         <section id="terms" class="tab-section hidden">
+            <h2 class="text-2xl font-semibold text-blue-300">Terms of Use</h2>
+            <p class="mb-2">Effective Date: 2025-07-19</p>
+            <h3 class="text-xl mt-6 font-bold text-red-300">⚠️ API Stability Notice</h3>
+            <br>
+            <p class="bg-red-900 text-red-200 p-3 rounded">
+               This WebSocket API is considered <strong>unstable</strong> (Major version 0 using SemVer). It is provided <strong>as-is</strong> with no guarantee of uptime, structure, or continued support. Use at your own risk.
+            </p>
+            <h3 class="text-xl font-bold mt-4">Definitions</h3>
+            <ul class="list-disc list-inside space-y-1">
+               <li><strong>'APIs'</strong> means our application programming interfaces made available through the 24Data API website (<a href="https://24Data.ptfs.app/" class="text-blue-400 underline" target="_blank" rel="noopener noreferrer">https://24Data.ptfs.app/</a>).</li>
+               <li><strong>'Services'</strong> means the services provided to players through the ATC 24 Discord Server or through the ATC 24 portal.</li>
+               <li><strong>'Application'</strong> means the software application, website or other interface that you develop, own or operate to interact with the 24Data APIs.</li>
+            </ul>
+            <h3 class="text-xl font-bold mt-4">Agreement</h3>
+            <h4 class="text-lg font-semibold mt-2">Access</h4>
+            <ul class="list-disc list-inside space-y-1">
+               <li>You are granted a non-exclusive, worldwide, non-transferable, limited license to access our APIs only as necessary to develop, test, use and support your Application.</li>
+               <li>You may not sell, rent, lease, sublicense, redistribute or syndicate access to any of our APIs.</li>
+               <li>You may not Commercially Distribute your Application. This includes any direct charges, freemium models, or free apps that connect to paid products or services.</li>
+               <li>These restrictions apply to all Applications, whether public or private/custom-built.</li>
+            </ul>
+            <h4 class="text-lg font-semibold mt-2">Usage</h4>
+            <ul class="list-disc list-inside space-y-1">
+               <li>You must use the APIs only in accordance with this Agreement and the 24Data API documentation.</li>
+               <li>
+                  Prohibited activities:
+                  <ul class="list-disc list-inside ml-6">
+                     <li>Accessing APIs in violation of laws or regulations.</li>
+                     <li>Breaking or bypassing our technical/security systems.</li>
+                     <li>Creating security vulnerabilities or testing our systems without authorization.</li>
+                     <li>Replicating or competing with our Services.</li>
+                     <li>Reverse engineering the APIs or Services.</li>
+                     <li>Exceeding rate limits or engaging in abusive usage.</li>
+                  </ul>
+               </li>
+               <li>Limit data usage to only what’s required for functionality, and store no longer than 14 days.</li>
+               <li>
+                  You may not:
+                  <ul class="list-disc list-inside ml-6">
+                     <li>Use API Data to train large language models.</li>
+                     <li>Retain API Data longer than 14 days.</li>
+                  </ul>
+               </li>
+            </ul>
+            <h4 class="text-lg font-semibold mt-2">Modifications</h4>
+            <p>We may make changes to our APIs at any time, including breaking changes, with or without notice.</p>
+            <h4 class="text-lg font-semibold mt-2">Feedback</h4>
+            <p>If you provide feedback or suggestions, we may use them freely and without obligation to you.</p>
+            <h4 class="text-lg font-semibold mt-2">Termination</h4>
+            <p>You may stop using the APIs at any time. We may terminate your access at any time, with or without cause or notice.</p>
+            <h4 class="text-lg font-semibold mt-2">Disclaimer of Warranties and Liability</h4>
+            <p><strong>THE APIS ARE PROVIDED "AS IS" AND "AS AVAILABLE".</strong> We disclaim all warranties—express or implied—including merchantability, fitness for a particular purpose, and non-infringement. We make no guarantees regarding uptime, performance, or accuracy. We are not liable for any damages arising from use or inability to use the APIs.</p>
+         </section>
+         <section id="tryapi" class="tab-section hidden">
+            <h2 class="text-2xl font-semibold text-blue-300 mb-4">Try REST API</h2>
+            <nav class="mb-4 border-b border-blue-700">
+               <ul class="flex space-x-4 text-blue-300">
+                  <li><button class="tryapi-subtab-button pb-2 border-b-2 border-transparent hover:border-blue-400 font-semibold" data-subtab="tryapi-rest">REST</button></li>
+               </ul>
+            </nav>
+            <div id="tryapi-rest" class="tryapi-subtab">
+               <form id="apiRequestForm" class="mb-4">
+                  <label for="endpoint" class="block mb-2">Enter REST endpoint (e.g. <code>/acft-data</code>):</label>
+                  <input id="endpoint" type="text" class="w-full p-2 rounded bg-gray-800 text-white mb-2" value="/acft-data" required />
+                  <button type="submit" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded">Send GET Request</button>
+               </form>
+               <pre id="apiResponse" class="bg-gray-800 p-4 rounded max-h-64 overflow-auto whitespace-pre-wrap hidden"></pre>
+            </div>
+         </section>
       </div>
-
-    </section>
-  </div>
-
-  <footer class="text-sm text-gray-500 mt-10">
-    <p>© 2025 24Data API | Effective as of 2025-07-19</p>
-  </footer>
-
-  <script src="main.js"></script>
-</body>
+      <footer class="text-sm text-gray-500 mt-10">
+         <p>© 2025 24Data API | Effective as of 2025-07-19</p>
+      </footer>
+      <script src="main.js"></script>
+   </body>
 </html>
